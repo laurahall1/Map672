@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>MAP672 Module 2 Template</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: ivory;
+            font-family: sans-serif;
+            color: 3d3d3d;
+        }
+        /*This sets the style for the appearance of the headings on the Web page*/
+        h1{
+            font-size: 1.6em;
+            margin-left: 25px;
+        }
+        h2{
+            font-size: 1.4em;
+            margin-left: 25px;
+        }
+        p{
+            font-size: 1em;
+            margin: 15px 25px;
+            max-width: 800px;
+        }
+        a{
+            color: #3e6b93;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+            
+        }
+        img{
+            margin-left: 25px;
+        }
+        /*This sets the appearance of a unique item on the Web page and sets the appearance of a class of items*/
+        #box{
+            width: 200px;
+            height: 200px;
+            background: #3e6b93;
+            margin: 25px;
+        }
+        .circle{
+            width: 100px;
+            height: 100px;
+            background: #bf6864;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 25px;
+            
+        }
+    </style>
+</head>
+
+<body>
+<!-- Structured HTML goes within the body tags -->
+    
+    <h1>Practice Web Page</h1>
+    <h2>We are just playing with HTML here!</h2>
+    <p>The map displayed on this page is illustrative of the "cartographic gaze." It projects the 
+    God's-eye view in that all the continents are visible at once in this two-dimensional depiction, a
+    view that is not possible in the natural world. The god in the God's-eye view ofthe cartographic gaze is not any sort of supreme being. Rather it is the cartographer himself. It is his vision of the world that the rest of us see.</p>
+    <img src="lesson-02-graphics/world2.png" alt="world map">
+    <!--This sends the reader to a Web page linked to the current Web page-->
+    <p>paragraph with link: <a href="https://baconipsum.com">Bacon ipsum generator</a> dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl.</p>
+    <ul>
+        <li>un-ordered list item 1</li>
+        <li>list item 2</li>
+        <li>list item 3</li>
+        <li><a href="http://leafletjs.com/">Leaflet</a></li>
+        <li><a href="https://www.mapbox.com/">Mapbox</a></li>
+        <li><a href="https://cartodb.com/">CartoDB</a></li>
+        <li><a href="http://d3js.org/">Data-Driven Documents</a></li>
+    </ul>
+    <!--This is a way of identifying a unique item in the page.-->
+    <div id="box"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div id="map"></div>
+
+    <script>
+        document.querySelector('h1').innerHTML = 'web mapping is sweet!';
+        var box = document.getElementById('box');
+        box.style.background = '#4d4a9f';
+        var elements = document.getElementsByClassName('circle');
+        
+        for(var i=0; i <= elements.length-1;i++){
+            elements[i].style['border-radius'] = '20%';
+        }
+        //This changes the width of the box when a user clicks on it.
+        box.addEventListener('click', function(){
+            this.syle.width = '400px';
+        });
+        var newListItem = document.createElement('li');
+        newListItem.innerHTML = "list item 4";
+        document.querySelector('ul').appendChild(newListItem);
+        console.log("hello map");
+        
+    </script>
+    
+</body>
+
+</html>
