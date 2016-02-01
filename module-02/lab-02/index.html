@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>MAP672 Module 2 Template</title>
+    <title>MAP672 Module 2: Cartographic Gaze</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -98,11 +98,13 @@
         }
         //This changes the width of the box when a user clicks on it.
         box.addEventListener('click', function(){
-            this.syle.width = '400px';
+            this.style.width = '400px';
         });
+        
         var newListItem = document.createElement('li');
         newListItem.innerHTML = "list item 4";
         document.querySelector('ul').appendChild(newListItem);
+        
         console.log("hello map");
         
     </script>
