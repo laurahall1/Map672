@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 03 Starter Template</title>
+    <title>Population of Selected Kentucky Cities</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -44,7 +44,6 @@
             font-size: 1em;
             color: #001323;
         }
-        /* Additional style rules go here! */
     </style>
 </head>
 
@@ -60,8 +59,7 @@
         <p>Map authored by Laura Hall</p>
         <p>Created February 2016. Population data from the
             <a href="http://quickfacts.census.gov/qfd/states/21000.html"> 2010 U.S. Census.</a></p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
-        </p>
+
     </footer>
 
     <script>
@@ -83,7 +81,6 @@
         });
         map.addLayer(tiles);
         
-        // BEGIN WRITING CODE FOR LAB 03 HERE
         var city1Name = "Lexington";
         console.log(city1Name);
         var city1Lat = 37.9886900;
@@ -106,16 +103,11 @@
         var city2Capital = true;
         console.log(true);
         
-        var city3Name = "Owensboro";
-        console.log(city3Name);
-        var city3Lat = 37.7742200;
-        console.log(city3Lat);
-        var city3Lon = -87.1133300;
-        console.log(city3Lon);
-        var city3Pop = 57265;
-        console.log(city3Pop);
-        var city3Capital = false;
-        console.log(false);
+        var city3Name = "Owensboro",
+            city3Lat = 37.7742200,
+            city3Lon = -87.1133300,
+            city3Pop = 57265,
+            city3Capital = false;
         
         var totalPop = city1Pop + city2Pop + city3Pop;
         console.log("The total population of these cities is:", totalPop);
@@ -126,11 +118,7 @@
         var cities = ["Lexington", "Frankfort", "Owensboro"];
         console.log(cities[2]);
         
-        
-        
-       
-        
-        // END WRITING CODE FOR LAB 03 HERE
+    
         
         // CITY1 MARKER CODE HERE
         var city1Popup = "<b>"+city1Name+"</b><br>"
