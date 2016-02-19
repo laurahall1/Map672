@@ -81,7 +81,6 @@
     });
     map.addLayer(tiles);
 
-    // begin writing/editing Lab 05 code here
 
     var lexArea = Number(prompt("Enter data", "Enter the area of Lexington in square miles"));
     var louArea = Number (prompt("Enter data", "Enter the area of Louisville in square miles"));
@@ -90,9 +89,8 @@
     prepareData(lexArea);
 	prepareData(louArea);
 	prepareData(hunArea);
-	// modify this function call to pass all three variables
 
-    function prepareData(lexArea) { /* modify function to include 2 more parameters */
+    function prepareData(lexArea, louArea, hunArea) {
 
         var cities = ["Lexington", "Louisville", "Huntington"]; 
         var cityCoords = [
@@ -103,13 +101,31 @@
         ];
         var cityPops = [308428, 597337, 49138];
 
-        var cityAreas = [lexArea]; /* include 2nd and 3rd city areas */
+        var cityAreas = [lexArea];
+		var cityAreas = [louArea];
+		var cityAreas = [hunArea];
 
-       // call the mapCities function, passing the 4 arrays created above as arguments
 
     }
+	 var cities = ["Lexington", "Louisville", "Huntington"]; 
+        var cityCoords = [
+            [38.0297, -84.4947], 
+            [38.2542400, -85.7594100],
+            [38.4191667, -82.4452778]
 
-    function mapCities(cities, cityCoords) { /* include 2 more parameters here */
+        ];
+        var cityPops = [308428, 597337, 49138];
+
+        var cityAreas = [lexArea];
+		var cityAreas = [louArea];
+		var cityAreas = [hunArea];
+		
+    mapCities(cities);
+	mapCities(cityCoords);
+	mapCities(cityPops);
+	mapCities(cityAreas);
+	
+    function mapCities(cities, cityCoords, cityPops, cityAreas) { 
 
         var units = prompt('Units for calculating density', 'Enter "miles" or "km"');
 
@@ -120,7 +136,7 @@
                              return value to the "density" variable */
 
             var popup = "<b>"+cities[i]+"</b><br>"
-                            //+"<b>Density</b>: "+density.toLocaleString()+" people per sq " + units;
+                            +"<b>Density</b>: "+density.toLocaleString()+" people per sq " + units;
 
             L.marker(cityCoords[i]).addTo(map)
                 .bindPopup(popup);
