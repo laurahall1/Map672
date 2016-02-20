@@ -83,10 +83,10 @@
     var louArea = Number (prompt("Enter data", "Enter the area of Louisville in square miles"));
     var hunArea = Number (prompt("Enterdata", "Enter the area of Huntington in square miles"));
 
-    prepareData(lexArea);
-	prepareData(louArea);
-	prepareData(hunArea);
+    // need to send all three values as arguments to the function
+    prepareData(lexArea, louArea, hunArea);
 
+    // function accepts three values
     function prepareData(lexArea, louArea, hunArea) {
 
         var cities = ["Lexington", "Louisville", "Huntington"]; 
@@ -98,11 +98,10 @@
         ];
         var cityPops = [308428, 597337, 49138];
 
-        var cityAreas = [lexArea];
-		var cityAreas = [louArea];
-		var cityAreas = [hunArea];
+        // you were re-assiging a value to city Areas each time. put all 3 in an array (like the other data)
+        var cityAreas = [lexArea, louArea, hunArea];
 
-    }
+
 	 var cities = ["Lexington", "Louisville", "Huntington"]; 
         var cityCoords = [
             [38.0297, -84.4947], 
@@ -111,47 +110,49 @@
 
         ];
         var cityPops = [308428, 597337, 49138];
+      
+      // again, you're calling this function four times. Call it once and send all the arguments
+      mapCities(cities, cityCoords, cityPops, cityAreas);
+      
+        
+    }
+  
 
-        var cityAreas = [lexArea];
-		var cityAreas = [louArea];
-		var cityAreas = [hunArea];
-		
-    mapCities(cities);
-	mapCities(cityCoords);
-	mapCities(cityPops);
-	mapCities(cityAreas);
 	
     function mapCities(cities, cityCoords, cityPops, cityAreas) { 
 
+        // user enteres either miles or km
         var units = prompt('Units for calculating density', 'Enter "miles" or "km"');
 
+        // loop through all your cities
         for(var i = 0; i < cities.length; i++){
-    
-	calcPopDensity (cityPops, cityAreas, units);
-			
-	function calcPopDensity(cityPops, cityAreas, units) {
-		var density = (cityPops/cityAreas)
-		return density
-	}						 
-
+          
+          // calculate the desnity of each and store as variable
+          var density = calcPopDensity (cityPops[i], cityAreas[i], units);
+					 
+            // build popup
             var popup = "<b>"+cities[i]+"</b><br>"
                             +"<b>Density</b>: "+density.toLocaleString()+" people per sq " + units;
 
+            // add the marker to the map
             L.marker(cityCoords[i]).addTo(map)
                 .bindPopup(popup);
 
         }
     }
     
-	calcPopDensity (cityPops, cityArea, units);
-	      var units = ("miles")
+	function calcPopDensity (cityPop, cityArea, units){
+      
+        // function accepts single values as parameters and returns the calculated value
+	      
+          // you don't want to reassign the value of units here
 		  
-		  if (units == "miles"){
-			 units = "km";
+		  if (units == "km"){
+			 return cityPop/(cityArea * 2.59);
 		  } else {
-			  units = "miles"
+			  return cityPop/cityArea;
+          }
 		
-	function calcPopDensity(cityPops[i], cityAreas[i], units){
 		
 	}
 	
