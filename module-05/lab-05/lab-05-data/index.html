@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 05 Starter Template</title>
+    <title>Population and Population Density of Selected Cities</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -44,15 +44,14 @@
             font-size: 1em;
             color: #001323;
         }
-        /* Additional style rules go here! */
+       
         
-
     </style>
 </head>
 
 <body>
-    <header>
-		<h1>Population of Selected Cities Along the I-64 Corridor</h1>
+    <header> 
+		<h1>Population and Population Density of Selected Cities Along the I-64 Corridor</h1>
         <h2>None of These Cities Is a State Capital</h2>
     </header>
 
@@ -61,8 +60,6 @@
     <footer>
         <p>Map authored by Laura Hall</p>
         <p>Created February 2016.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
-        </p>
     </footer>
 
 <script>
@@ -105,7 +102,6 @@
 		var cityAreas = [louArea];
 		var cityAreas = [hunArea];
 
-
     }
 	 var cities = ["Lexington", "Louisville", "Huntington"]; 
         var cityCoords = [
@@ -129,11 +125,14 @@
 
         var units = prompt('Units for calculating density', 'Enter "miles" or "km"');
 
-        for(var i = 0; i < cities.length; i++) {
-
-            /*var density =  call a function named calcPopDensity here, passing
-                             the city population, area, and units as arguments, and assign
-                             return value to the "density" variable */
+        for(var i = 0; i < cities.length; i++){
+    
+	calcPopDensity (cityPops, cityAreas, units);
+			
+	function calcPopDensity(cityPops, cityAreas, units) {
+		var density = (cityPops/cityAreas)
+		return density
+	}						 
 
             var popup = "<b>"+cities[i]+"</b><br>"
                             +"<b>Density</b>: "+density.toLocaleString()+" people per sq " + units;
