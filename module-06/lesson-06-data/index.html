@@ -259,6 +259,53 @@ var iguana = {
 var result = iguana.calculateBMI();
 console.log(result); // output is still 1.87
 	
+var iguana = {
+	name: "Jack",
+	weight: 4.2,
+	eyes: "dreamy",
+	questForWorldDomination: true,
+	invasionPlans: function(inData){
+		//iguana can do something with the data here
+		console.log(inData);
+	}
+}	
+var lexData = {
+	lat: 38.23,
+	lon: -89.21,
+	name: "Lexington",
+	pop: 821325
+}	
+iguana.invasionPlans(lexData);
+	
+var cityName = "Lexington";
+	console.log(cityName);
+var cityNameWithState = cityName.concat(", KY"); //concat method concatenates two Strings
+	console.log(cityNameWithState); //output is "Lexington, KY"
+	
+var cityName = "Lexington";
+var cityNameCaps = cityName.toUpperCase();	
+	console.log(cityNameCaps); //output is LEXINGTON
+	
+var cityName = "Lexington";
+	console.log(cityName.charAt(4)); //returns the String
+	                                //character at index 4, "n"
+	console.log(cityName.indexOf("x")); // returns the index (2) of the
+	                                    // first character found of "x" 
+	
+var pop = 1200000;
+var area = 683.24;
+var density = pop/area;
+	console.log(density); //output is 1756.337450968913
+var output = density.toLocaleString();
+	console.log(output); //output is 1,756.337
+	
+var cities = ["Lexington", "Bowling Green"];
+	console.log(cities); //output is ["Lexington", "Bowling Green"]
+cities.push("Frankfort");
+	console.log(cities); //output is ["Lexington", "Bowling Green", "Frankfort"]
+cities.pop();
+	console.log(cities); //output is ["Lexington, "Bowling Green"]
+	
 
 
 </script>
