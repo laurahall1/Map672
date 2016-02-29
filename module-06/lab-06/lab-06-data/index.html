@@ -46,22 +46,33 @@
         }
         .kentucky-blue {
             color: #165bb6;
-        }
+		}
+		.cuyahoga-purple {
+		     color: #800080
+		}
+		.hamilton-green{
+			color: #5ab322
+		} 
+		.montgomery-pink{
+			color:#ff3399
+		}	
+        
         
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Selected Ohio Cities</h1>
+        <h2>Population and Location</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
         <p>Map authored by Laura Hall</p>
-		<p>Additional information about the data and map goes here.</p>
+		<p>Created February 2016. Population data is from the 
+			<a href = http://quickfacts.census.gov/qfd/states/39000.html> 2010 U.S. Census </a> .</p>
     </footer>
 
     <script>
@@ -84,15 +95,15 @@
                  properties: {
                      coordinates: [39.1620000, -84.4568900],
                      population: 296943,
-                     state: "OH"
+                     county: "Hamilton"
                  }
              },
 			 {
 			 	name: "Cleveland",
 				properties: {
-					cooordinates:  [41.4995000, -81.6954100],
+					coordinates:  [41.4995000, -81.6954100],
 					population: 396815,
-					state: "OH"
+					county: "Cuyahoga"
 				}
 			},
 			{
@@ -100,7 +111,7 @@
 			     properties: {
 			          coordinates: [39.7589500, -84.1916100],
 			          population: 141527,
-					  state: "OH"
+					  county: "Montgomery"
 			}
 			}
 			
@@ -111,12 +122,30 @@
 			var props = cities[i].properties;
 			//console.log(props);
 			var popup = "I am a temporary string value.";
-			
+			var pop = cities[i].properties. population;
+			var county = cities[i].properties.county;
 			L.marker(props.coordinates).addTo(map).bindPopup(popup);
+			var colorClass = "<div class='"+colorClass+"'><b>"+name+"</b><br>"+
+    "<b>Population</b>: "+pop.toLocaleString()+"<div>";
+			buildPopup (cities[i].name. pop. county, cities[i].colorClass);
+			
+		
+		function buildPopup (cities) {
+		
+		}
+			
+			if(county == "Cuyahoga") {
+			var colorClass = "cuyahoga-purple";
+		}
+
+		if (county == "Hamilton") {
+			var colorClass = "hamilton-green";
 			
 		}
+		if (county =="Montgomery") {
+			var colorClass = "montgomery-pink";
+		}
 		
-			
 		
           
     </script>
