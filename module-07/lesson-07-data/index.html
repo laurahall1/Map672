@@ -204,34 +204,49 @@
 		//});
 
 		//});
-
+        //set locations and properties for restaurants given variable iguanaRestaurants
 		var iguanaRestaurants = L.layerGroup();
+		//sets color options for circles in the redIguana group
 		var redIguanaOptions = {
 			color: 'red',
 			 fillColor: 'red'
 		};
+		//sets color options for circles in blueIguana group
 		var blueIguanaOptions = {
 			color: '#03f',
 			 fillColor: '#03f'
 		};
+		//sets location and radius of redIguana circle and applies color properties set in redIguana group
 		var redIguana = L.circle([40.7718, -111.9124], 400, redIguanaOptions);
+		//sets color for redIguana
 		redIguana.color = 'red';
+		//puts subset of redIguana restaurants into larger set of iguanaRestaurants
 		redIguana.addTo(iguanaRestaurants);
+		//sets location and radius of blueIguana circle and applies color properties set in blueIguana group
 		var blueIguana = L.circle([40.7657, -111.8930], 300, blueIguanaOptions);
+		//sets color for blueIguana
 		blueIguana.color = 'blue';
+		//puts subset of blueIguana restaurants into larger set of iguanaRestaurants
 		blueIguana.addTo(iguanaRestaurants);
+		//places circles for iguanaRestaurants onto the map
 		iguanaRestaurants.addTo(map);
-
+        //loops actions for each each layer
 		iguanaRestaurants.eachLayer(function (layer) {
-					layer.on('mouseover', function(e) {
-						e.target.setStyle({
+			//sets result that will deploy upon user mousing over circle		
+			layer.on('mouseover', function(e) {
+				//when user mouse over circle the circle will be yellow		
+				e.target.setStyle({
 							color: 'yellow',
 							 fillColor: 'yellow'
 						});
 					});
+			//sets result that will deploy when user stops mousing over circle
 		layer.on('mouseout', function(e){
+			//conditional statement 
 			if (e.target == 'red'){
+				//if the target is part of red group redIguanaOptions will show upon mouseout
 				e.target.setStyle(redIguanaOptions);
+				//if target is not red it is blue and blueIguanaOptions will show upon mouseout
 			}else if (e.target =='blue'){
 				e.target.setStyle(blueIguanaOptions);
       }
