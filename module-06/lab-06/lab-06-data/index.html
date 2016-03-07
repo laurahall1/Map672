@@ -112,39 +112,38 @@
 			          coordinates: [39.7589500, -84.1916100],
 			          population: 141527,
 					  county: "Montgomery"
-			}
+			     }
 			}
 			
         ];
             
         for (var i = 0; i <cities.length; i++){
-		//console.log(cities[i].properties.population);	
+            
+            // store references to attribute info
 			var props = cities[i].properties;
-			//console.log(props);
-			var popup = "I am a temporary string value.";
-			var pop = cities[i].properties. population;
-			var county = cities[i].properties.county;
-			L.marker(props.coordinates).addTo(map).bindPopup(popup);
-			var colorClass = "<div class='"+colorClass+"'><b>"+name+"</b><br>"+
+			var pop = cities[i].properties.population;
+            var county = cities[i].properties.county;
+            
+            // call the buildPopup method and assign to popup
+			var popup = buildPopup(cities[i].name, pop, county);
+            
+            // create the marker and bind the newly created popup
+            L.marker(props.coordinates).addTo(map).bindPopup(popup);
+			
+        }
+		function buildPopup (name, pop, county ) {
+			
+            if(county == "Cuyahoga") {
+                var colorClass = "cuyahoga-purple";
+            } else if (county == "Hamilton") {
+                var colorClass = "hamilton-green";
+            } else if (county =="Montgomery") {
+                var colorClass = "montgomery-pink";
+            }
+            // return a string with all info, including specific colorClass variable
+            return "<div class='"+colorClass+"'><b>"+name+"</b><br>"+
     "<b>Population</b>: "+pop.toLocaleString()+"<div>";
-			buildPopup (cities[i].name. pop. county, cities[i].colorClass);
-			
-		
-		function buildPopup (cities) {
-		
-		}
-			
-			if(county == "Cuyahoga") {
-			var colorClass = "cuyahoga-purple";
-		}
-
-		if (county == "Hamilton") {
-			var colorClass = "hamilton-green";
-			
-		}
-		if (county =="Montgomery") {
-			var colorClass = "montgomery-pink";
-		}
+        }
 		
 		
           
