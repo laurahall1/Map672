@@ -55,15 +55,15 @@
 
 <body>
 	<header>
-		<h1>Map Title</h1>
-		<h2>Map Subtitle</h2>
+		<h1>Geothermal Power Plants in the United States</h1>
+		<h2>Including Name and Capacity</h2>
 	</header>
 
 	<div id='map'></div>
 
 	<footer>
-		<p>Map authored by YOUR NAME</p>
-		<p>Additional information about the data and map goes here.</p>
+		<p>Map authored by Laura Hall</p>
+		<p>Created March 2016.</p>
 	</footer>
 
 	<script src="power-plants.js"></script>
@@ -86,36 +86,45 @@
 		L.geoJson(plants, {
 			pointToLayer: function (feature, latlng) {
 				return L.circleMarker(latlng, {
-					color: 'orange'
-					, weight: 1
-					, fillColor: 'yellow'
-					, fillOpacity: .8
-					, radius: getRadius(feature.properties.capacity_mw)
+					color: 'darkbrown',
+				    weight: 1,
+					fillColor: 'brown',
+					fillOpacity: .8,
+					radius: getRadius(feature.properties.capacity_mw)
 				});
 			},
-			onEachFeature: function(feature, layer){
-				layer.on('mouseover', function() {
+			 onEachFeature: function (feature, layer) {
+				layer.on('mouseover', function () {
 					layer.setStyle({
-						fillColor: 'red'
+						fillColor: 'green'
 					});
-					
-					
+
+
 				});
 				//console.log(layer);
-				layer.on('mouseout', function(){
+				layer.on('mouseout', function () {
 					layer.setStyle({
-						fillColor:'yellow'
+						fillColor: 'brown'
 					});
-					
+
+				
+					layer.bindPopup("<b>"+(feature.properties.plant_name)+"</b>" &&
+									feature.properties.capacity_mw);
+													 
+				 
 				});
+			},
+			filter: function(feature, layer){
+				if (feature.properties.fuel_source.Geothermal){
+					return feature;
+				}
 			}
 		}).addTo(map);
 
-		function getRadius(area){
-			var radius = Math.sqrt(area/Math.PI);
-			return radius *.6;
+		function getRadius(area) {
+			var radius = Math.sqrt(area / Math.PI);
+			return radius * 2;
 		}
-		
 	</script>
 
 </body>
