@@ -94,24 +94,22 @@
 				});
 			},
 			 onEachFeature: function (feature, layer) {
+                
+                layer.bindPopup("<b>"+feature.properties.plant_name+"</b><br>" +
+									feature.properties.capacity_mw + ' MW');
+                 
 				layer.on('mouseover', function () {
 					layer.setStyle({
 						fillColor: 'green'
 					});
 
-
 				});
-				//console.log(layer);
+			
 				layer.on('mouseout', function () {
 					layer.setStyle({
 						fillColor: 'brown'
 					});
 
-				
-					layer.bindPopup("<b>"+(feature.properties.plant_name)+"</b>" &&
-									feature.properties.capacity_mw);
-													 
-				 
 				});
 			},
 			filter: function(feature, layer){
