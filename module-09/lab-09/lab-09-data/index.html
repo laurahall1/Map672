@@ -75,8 +75,151 @@
       });  
       
       tiles.addTo(map);
+		
+	var commonStyles = {
+		weight: 1,
+		stroke: 1, 
+		fillOpacity: .8
+	}
+	
+	var coalLayer = L.geoJson(plants, {
+		pointToLayer: function (feature, latlng){
+			return L.circleMarker (latlng, commonStyles);
+		},
+		
+		filter: function (feature){
+			if (feature.properties.fuel_source.Coal){
+				return feature;
+			}
+		},
+		style: function (feature){
+			return{
+				color:'#ff0000',
+				fillColor:'#ff0000',
+				radius: getRadius(feature.properties.fuel_source.Coal)
+			}
+		}
+	}).addTo(map);
+		
+	map.on('click', function(e){
+		coalLayer.eachLayer(function(layer){
+			var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
+			
+			if(distance>500){
+				layer.setStyle({
+					stroke:false,
+					fill:false
+				});
+				
+			} else {
+				layer.setStyle({
+					stroke:true,
+					fill:true
+				});
+				
+			}
+			
+		});
+						   
+	});
+		   
+		
+	var nuclearLayer = L.geoJson(plants, {
+		pointToLayer: function(feature, latlng){
+			return L.circleMarker (latlng, commonStyles);
+		},
+		
+		filter: function(feature){
+			if (feature.properties.fuel_source.Nuclear){
+				return feature;
+        	}
+		},
+		style: function(feature){
+			return{
+				color: '#a020f0',
+				fillColor:'#a020f0',
+				radius: getRadius(feature.properties.fuel_source.Nuclear)
+			}
+		}
+	}).addTo(map);
+		
+	map.on('click', function(e){
+		nuclearLayer.eachLayer(function(layer){
+			var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
+			
+			if(distance>500){
+				layer.setStyle({
+					stroke:false,
+					fill:false
+				});
+				
+			} else {
+				layer.setStyle({
+					stroke:true,
+					fill:true
+				});
+				
+			  }
+							
+	       });
+		
+	    });
+		
+	var solarLayer = L.geoJson(plants,  {
+		pointToLayer: function (feature, latlng){
+			return L.circleMarker(latlng, commonStyles);
+		},
+		
+		filter: function(feature){
+			if(feature.properties.fuel_source.Solar){
+				return feature;
+			}
+		},
+		style: function(feature){
+			return{
+				color:'#ffff00',
+				fillColor:'#ffff00',
+				radius: getRadius(feature.properties.fuel_source.Solar)
+			}
+		}
+	}).addTo(map);
+		
+	map.on('click', function(e){
+		solarLayer.eachLayer(function(layer){
+			var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
+			
+			if(distance>500){
+				layer.setStyle({
+					stroke:false,
+					fill:false
+				});
+				
+			} else {
+				layer.setStyle({
+					stroke:true,
+					fill:true
+				});
+			}
+		});
+							
+	});
+		  	
+		
+		function getRadius (val){
+			var radius = Math.sqrt(val/Math.PI);
+			return radius *.8;
+		}
+							  	
+	var sourceLayers = {
+		"<b style = 'color:#ff0000'>Coal</b>": coalLayer,
+		"<b style = 'color:#a020f0'>Nuclear</b>":nuclearLayer,
+		"<b style = 'color:#ffff00; text-shadow: 0px 0px 1px #333'>Solar</b>":solarLayer
+	}								
+	
+	L.control.layers(null, sourceLayers,{collapsed:false}).addTo(map);
+		
                   
-    </script>
+    </script> 
     
 </body>
 
