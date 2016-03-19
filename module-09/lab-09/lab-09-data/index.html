@@ -56,8 +56,8 @@
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by YOUR NAME</p>
-        <p>Additional information about the data and map goes here.</p>
+        <p>Map authored by Laura Hall</p>
+        <p>Power Plants in the U.S. by Name and Fuel Source</p>
     </footer>
 
     <script src="power-plants.js"></script>
@@ -117,6 +117,10 @@
 					fill:true
 				});
 				
+				var content = "<b>"+feature.properties.plant_name+"</b><br>";
+				
+				layer.bindPopup(content+"I am <b>" +distance.toLocaleString() +
+								  "km</b><b> from the click point.");
 			}
 			
 		});
@@ -158,12 +162,14 @@
 					stroke:true,
 					fill:true
 				});
-				
+				var content = "<b>"+feature.properties.plant_name+"</b><br>";
+				layer.bindPopup(content+"I am <b>"+distance.toLocaleString() +
+								 "km</b><b> from the click point.");
 			  }
 							
 	       });
 		
-	    });
+	    });""
 		
 	var solarLayer = L.geoJson(plants,  {
 		pointToLayer: function (feature, latlng){
@@ -199,6 +205,11 @@
 					stroke:true,
 					fill:true
 				});
+				
+				var content = "<b>"+feature.properties.plant_name+"</b><br>";
+				
+				layer.bindPopup(content+"I am<b>"+distance.toLocaleString() +
+								 "km</b><b> from the click point.");
 			}
 		});
 							
