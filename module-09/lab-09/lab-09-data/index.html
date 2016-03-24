@@ -100,36 +100,8 @@
 			}
 		}
 	}).addTo(map);
-		
-	map.on('click', function(e){
-		coalLayer.eachLayer(function(layer){
-			var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
-			
-			if(distance>500){
-				layer.setStyle({
-					stroke:false,
-					fill:false
-				});
-				
-			} else {
-				layer.setStyle({
-					stroke:true,
-					fill:true
-				});
-				
-				
-				var content = "<b>"+feature.properties.plant_name+"</b><br>"
-				
-				layer.bindPopup(content+"I am <b>" +distance.toLocaleString() +
-								  "km</b><b> from the click point.");
-			}
-			
-		});
-						   
-	});
-		   
-		
-	var nuclearLayer = L.geoJson(plants, {
+        
+    var nuclearLayer = L.geoJson(plants, {
 		pointToLayer: function(feature, latlng){
 			return L.circleMarker (latlng, commonStyles);
 		},
@@ -147,9 +119,28 @@
 			}
 		}
 	}).addTo(map);
+        
+    var solarLayer = L.geoJson(plants,  {
+            pointToLayer: function (feature, latlng){
+                return L.circleMarker(latlng, commonStyles);
+            },
+
+            filter: function(feature){
+                if(feature.properties.fuel_source.Solar){
+                    return feature;
+                }
+            },
+            style: function(feature){
+                return{
+                    color:'#ffff00',
+                    fillColor:'#ffff00',
+                    radius: getRadius(feature.properties.fuel_source.Solar)
+                }
+            }
+        }).addTo(map);
 		
 	map.on('click', function(e){
-		nuclearLayer.eachLayer(function(layer){
+		coalLayer.eachLayer(function(layer){
 			var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
 			
 			if(distance>500){
@@ -164,36 +155,50 @@
 					fill:true
 				});
 				
+<<<<<<< HEAD
+				
+				var content = "<b>"+feature.properties.plant_name+"</b><br>"
+=======
+				var content = "<b>"+layer.feature.properties.plant_name+"</b><br>";
+>>>>>>> origin/master
+				
+				layer.bindPopup(content+"I am <b>" +distance.toLocaleString() +
+								  "km</b><b> from the click point.");
+			}
+			
+		});
+						  
+		nuclearLayer.eachLayer(function(layer){
+			var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
+			
+			if(distance>500){
+				layer.setStyle({
+					stroke:false,
+					fill:false
+				});
+				
+			} else {
+				layer.setStyle({
+					stroke:true,
+					fill:true
+				});
+<<<<<<< HEAD
+				
 					
 				var content = "<b>"+feature.properties.plant_name+"</b><br>"
+=======
+				var content = "<b>"+layer.feature.properties.plant_name+"</b><br>";
+>>>>>>> origin/master
 				layer.bindPopup(content+"I am <b>"+distance.toLocaleString() +
 								 "km</b><b> from the click point.");
 			  }
 							
 	       });
 		
-	    });""
 		
-	var solarLayer = L.geoJson(plants,  {
-		pointToLayer: function (feature, latlng){
-			return L.circleMarker(latlng, commonStyles);
-		},
+
 		
-		filter: function(feature){
-			if(feature.properties.fuel_source.Solar){
-				return feature;
-			}
-		},
-		style: function(feature){
-			return{
-				color:'#ffff00',
-				fillColor:'#ffff00',
-				radius: getRadius(feature.properties.fuel_source.Solar)
-			}
-		}
-	}).addTo(map);
-		
-	map.on('click', function(e){
+
 		solarLayer.eachLayer(function(layer){
 			var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
 			
@@ -209,16 +214,21 @@
 					fill:true
 				});
 				
+<<<<<<< HEAD
 							
 				
 				var content = "<b>"+feature.properties.plant_name+"</b><br>"
+=======
+				var content = "<b>"+layer.feature.properties.plant_name+"</b><br>";
+>>>>>>> origin/master
 				
 				layer.bindPopup(content+"I am<b>"+distance.toLocaleString() +
 								 "km</b><b> from the click point.");
 			}
 		});
 							
-	});
+        
+    }); // end on click
 		  	
 		
 		function getRadius (val){
